@@ -22,7 +22,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
   const { fullName, userName, password, role } = req.body;
-  console.log(req.body);
+
   if (
     [fullName, userName, password, role].some((field) => field.trim() === "")
   ) {
@@ -110,8 +110,8 @@ const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
-      $set: {
-        refreshToken: undefined,
+      $unset: {
+        refreshToken: 1,
       },
     },
     {

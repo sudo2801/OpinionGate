@@ -1,12 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
-
 const feedbackSchema = new Schema(
   {
     customerName: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
       index: true,
@@ -16,17 +14,21 @@ const feedbackSchema = new Schema(
       required: true,
       trim: true,
     },
-    date: { type: Date, default: Date.now },
 
-   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   {
     timestamps: true,
-a}
+  }
 );
 
-
-
-
-export const User = mongoose.model("feedback", feedbackSchema);
-
+export const Feedback = mongoose.model("feedback", feedbackSchema);
