@@ -27,7 +27,7 @@ const createFeedback = asyncHandler(async (req, res) => {
 });
 
 const getFeedback = asyncHandler(async (req, res) => {
-  const { userId } = req.body;
+  const { userId } = req.params || {}
 
   if (!userId) {
     throw new ApiError(400, "userID is required");
@@ -60,7 +60,7 @@ const getFeedback = asyncHandler(async (req, res) => {
 });
 
 const deleteFeedback = asyncHandler(async (req, res) => {
-  const { feedbackId, userId } = req.body || {};
+  const { feedbackId, userId } = req.query || {};
 
   if ([feedbackId, userId].some((field) => field.trim() === "")) {
     throw new ApiError(400, "customerName and userId  required");
@@ -80,8 +80,9 @@ const deleteFeedback = asyncHandler(async (req, res) => {
     } else {
       deleteFeedback = await Feedback.deleteOne({
         _id: feedbackId,
-        _id: userId,
+        userId: userId,
       });
+      console.log(deleteFeedback)
     }
 
     if (!deleteFeedback) {

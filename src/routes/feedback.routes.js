@@ -8,7 +8,7 @@ const router = Router();
 // secured routes
 
 router.route("/create").post(verifyJWT, createFeedback);
-router.route("/all").get(verifyJWT, getFeedback);
-router.route("/delete").delete  (verifyJWT, deleteFeedback);
+router.route("/all/:userId").get(verifyJWT, getFeedback);
+router.route("/delete").delete(verifyJWT, deleteFeedback);
 
 export default router;
