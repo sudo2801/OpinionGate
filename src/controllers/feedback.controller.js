@@ -42,7 +42,7 @@ const getFeedback = asyncHandler(async (req, res) => {
 
     let allFeedback;
 
-    if (user.role === "admin") {
+    if (user.role === "Admin") {
       allFeedback = await Feedback.find();
     } else {
       allFeedback = await Feedback.find({ userId: userId });
