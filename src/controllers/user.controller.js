@@ -36,7 +36,6 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(409, "User with username already exist 🔴");
   }
 
-
   const user = await User.create({
     userName,
     fullName,
@@ -58,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  const {  userName, password } = req.body;
+  const { userName, password } = req.body;
   if (!(userName && password)) {
     throw new ApiError(400, "Username or password is required");
   }
@@ -123,7 +122,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: true,
   };
-  
+
   return res
     .status(200)
     .clearCookie("accessToken", options)
@@ -172,11 +171,9 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
           "Access Token refreshed successful"
         )
       );
-  } catch (error) { 
-    throw new ApiError(401,"invalid refreshToken")
+  } catch (error) {
+    throw new ApiError(401, "invalid refreshToken");
   }
 });
 
 export { registerUser, loginUser, logoutUser, refreshAccessToken };
-
-

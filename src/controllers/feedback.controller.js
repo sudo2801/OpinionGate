@@ -75,7 +75,7 @@ const deleteFeedback = asyncHandler(async (req, res) => {
 
     let deleteFeedback;
 
-    if (user.role === "admin") {
+    if (user.role === "Admin") {
       deleteFeedback = await Feedback.deleteOne({ _id: feedbackId });
     } else {
       deleteFeedback = await Feedback.deleteOne({
