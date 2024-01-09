@@ -62,7 +62,7 @@ The following endpoints are available in the Customer Feedback Backend API:
 
 - **Endpoint:** `POST users/register`
 
-### Read more
+## Postman API Documentation
 
 [Postman Documentation](https://documenter.getpostman.com/view/31848798/2s9YsKeWhn)
 
