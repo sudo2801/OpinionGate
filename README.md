@@ -1,4 +1,4 @@
-# Opinion Gate
+# Opinion Gate.
 
 ## Overview
 
